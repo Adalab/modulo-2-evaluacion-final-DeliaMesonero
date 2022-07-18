@@ -28,29 +28,43 @@ function handleFav(event){
 const idSelected = parseInt(event.currentTarget.id);
 const animeFound = results.data.find((result) => result.mal_id === idSelected);
 const favFound = favorites.findIndex ((fav) => fav.mal_id === idSelected);
-let newHtml = [];
-localStorage.setItem('data', JSON.stringify(favorites));
-console.log(animeFound);
- /*for (const eachFav of favorites) {
-    if(favFound === -1){
-    favorites.push(animeFound);*/
-    if(favFound === -1){
+if(favFound === -1){
     favorites.push(animeFound);
-    newHtml +=`<li class= 'favIem js-favList'>`;
-    newHtml += `<h2 class= 'favtitle js-favTitle >${animeFound} </h2>`;
-    newHtml += `<img src='' alt='img' class='js-favImage image'/>`;  
-    
-   } else {
-    favorites.splice(favFound, 1);
+} else {
+        favorites.splice(favFound, 1);
+    }
+renderList();
+renderFav();
+listenerAnime();
 
-}
-renderList(favorites);
+};
+
+
+function renderFav(){
+    let newHtml = [];
+    const wrongImageFav = 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png';
+    for (const eachFav of favorites){
+        newHtml +=`<li class= 'fav-color js-favList' id='${eachFav.mal_id}'>`;
+        newHtml += `<h2 class= 'title fav-color js-favTitle'>${eachFav.title} </h2>`;
+        if(eachFav.images.jpg.image_url === wrongImageFav){
+            newHtml += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} alt="imagen"/>`;
+        } else {
+            newHtml += `<img src='${eachFav.images.jpg.image_url}' alt='img' class='js-imageFav image'/>`;
+
+        }
+       
+         } 
+        
+        
 listenerAnime();
 listFav.innerHTML = newHtml; 
-console.log(favorites);
-
-
 }
+
+//localStorage.setItem('data', JSON.stringify(favorites));
+
+
+
+
 
 
 function listenerAnime(){
@@ -59,7 +73,7 @@ function listenerAnime(){
         li.addEventListener('click', handleFav);
         
     }
-}
+};
     
 btn.addEventListener('click', (event)=> {
     event.preventDefault();
