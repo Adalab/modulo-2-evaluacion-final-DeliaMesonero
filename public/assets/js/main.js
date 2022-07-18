@@ -36,7 +36,7 @@ if(favFound === -1){
 renderList();
 renderFav();
 listenerAnime();
-
+localStorage.setItem('data', JSON.stringify(favorites));
 };
 
 
@@ -59,12 +59,6 @@ function renderFav(){
 listenerAnime();
 listFav.innerHTML = newHtml; 
 }
-
-//localStorage.setItem('data', JSON.stringify(favorites));
-
-
-
-
 
 
 function listenerAnime(){
@@ -118,32 +112,33 @@ list.innerHTML = html;
 listenerAnime();
 };
 
-/*
-Al crear esta funcin de salen errores con result.data de la primera funcion
 
 function onLoad (){
     const dataLocalStorage = JSON.parse(localStorage.getItem('data'));
     console.log(dataLocalStorage);
     if (dataLocalStorage)  {
         favorites = dataLocalStorage;
-        renderList(favorites); 
-        console.log('Hay algo');
+        renderFav(); 
+        
 
     }else {
 
     }
 
 }
-onLoad();*/
+onLoad();
+
 
 function clearResults(){
     results = '';
 }
-function handleReset(event){
-    event,preventDefault();
-    if(results !== '') {
-        clearResults();
-    }
+function handleReset(ev){
+    let resetList = renderList;
+    ev.preventDefault();
+     clearResults();
+     list.innerHTML='';
+     resetList='';
+    
        
 }
 reset.addEventListener('click' , handleReset);
