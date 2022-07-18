@@ -1,0 +1,49 @@
+/*@import 'core/variables';
+@import 'core/reset';
+@import 'components/code';
+@import 'components/links';
+@import 'layout/page';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'pages/index';
+*/
+.body {
+  background-color: #d3cfcf; }
+
+.section {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row-reverse; }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  text-align: center;
+  padding-right: 40px; }
+
+.title {
+  color: #504949;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif; }
+
+.list {
+  border: solid black 10px;
+  list-style: none; }
+
+.fav-color {
+  color: white;
+  background-color: black; }
+
+.containerFav {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  width: auto; }
+
+.favItem {
+  list-style: none; }
+
+/*# sourceMappingURL=main.css.map */
