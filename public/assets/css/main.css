@@ -19,9 +19,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   text-align: center;
   padding-right: 40px; }
+
+.titleResults {
+  margin-left: 40px; }
 
 .title {
   color: #504949;
@@ -36,12 +39,22 @@
   color: white;
   background-color: black; }
 
+.fav-colorList {
+  color: white;
+  background-color: black;
+  border: solid aqua 5px; }
+
 .containerFav {
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: flex-start;
   width: auto; }
+
+.title-fav {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px; }
 
 .favItem {
   list-style: none; }

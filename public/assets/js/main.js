@@ -5,6 +5,8 @@ const reset = document.querySelector('.js-btnReset');
 const searchInput = document.querySelector('.js-search');
 const list =document.querySelector('.js-list');
 const listFav = document.querySelector('.js-listFav');
+const btnFav = document.querySelector('.js-btnFav');
+
 //const searchInputValue = searchInput.value;
 let results = [];
 let favorites= [];
@@ -21,7 +23,30 @@ let newFav = [];
   } else { newFav ='';}
   
 }; */
+function clearResults(){
+    results = '';
+}
+function handleReset(ev){
+    let resetList = renderList;
+    ev.preventDefault();
+     clearResults();
+     list.innerHTML='';
+     resetList='';
+    
+       
+}
+reset.addEventListener('click' , handleReset);
 
+function handleResetFav(event){
+    event.preventDefault();
+    favorites = [];
+    listFav.innerHTML = '';
+    localStorage.removeItem("data");
+
+}
+
+
+btnFav.addEventListener('click' , handleResetFav);
 
 function handleFav(event){
   console.log(event.currentTarget.id);  
@@ -44,8 +69,8 @@ function renderFav(){
     let newHtml = [];
     const wrongImageFav = 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png';
     for (const eachFav of favorites){
-        newHtml +=`<li class= 'fav-color js-favList' id='${eachFav.mal_id}'>`;
-        newHtml += `<h2 class= 'title fav-color js-favTitle'>${eachFav.title} </h2>`;
+        newHtml +=`<li class= 'favItem fav-colorList js-favList' id='${eachFav.mal_id}'>`;
+        newHtml += `<h2 class= 'title-fav  js-favTitle'>${eachFav.title} </h2>`;
         if(eachFav.images.jpg.image_url === wrongImageFav){
             newHtml += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} alt="imagen"/>`;
         } else {
@@ -97,7 +122,8 @@ const renderList = (arrayresults) =>{
         } else {
             classFav = '';
         }
-
+      
+       
         html +=`<li class= 'list js-eachList ${classFav}' id='${eachResult.mal_id}'>`;
         if(eachResult.images.jpg.image_url === wrongImage){
             html += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} alt="imagen"/>`;
@@ -106,8 +132,10 @@ const renderList = (arrayresults) =>{
 
         }
         html += `<h2 class= 'title js-title ${classFav}'>${eachResult.title} </h2>`;
+       
         
     }
+
 list.innerHTML = html;
 listenerAnime();
 };
@@ -118,28 +146,9 @@ function onLoad (){
     console.log(dataLocalStorage);
     if (dataLocalStorage)  {
         favorites = dataLocalStorage;
-        renderFav(); 
-        
-
-    }else {
-
+        renderFav();  
     }
-
 }
 onLoad();
 
-
-function clearResults(){
-    results = '';
-}
-function handleReset(ev){
-    let resetList = renderList;
-    ev.preventDefault();
-     clearResults();
-     list.innerHTML='';
-     resetList='';
-    
-       
-}
-reset.addEventListener('click' , handleReset);
 //# sourceMappingURL=main.js.map
