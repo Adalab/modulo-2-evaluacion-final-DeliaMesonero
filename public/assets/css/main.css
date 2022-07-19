@@ -59,4 +59,13 @@
 .favItem {
   list-style: none; }
 
+.js-search {
+  border: solid aqua 2px; }
+
+.btnFav {
+  margin-left: 20px; }
+
+.resetIconFav {
+  text-decoration: none; }
+
 /*# sourceMappingURL=main.css.map */

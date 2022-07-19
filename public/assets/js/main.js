@@ -6,23 +6,14 @@ const searchInput = document.querySelector('.js-search');
 const list =document.querySelector('.js-list');
 const listFav = document.querySelector('.js-listFav');
 const btnFav = document.querySelector('.js-btnFav');
+const resetIconFav = document.querySelector('.js-resetIconFav');
 
-//const searchInputValue = searchInput.value;
+
 let results = [];
 let favorites= [];
 let newFav = [];
 
-
-/*function pintNewFavorites(){
-    let newHtml = [];
-    if(newFav === favorites){
-        newHtml +=`<li class= 'list js-eachList ${classFav}' id='${eachResult.mal_id}'>`;
-        newHtml += `<h2 class= 'title js-title ${classFav}'>${eachResult.title} </h2>`;
-        newHtml += `<img src='${eachResult.images.jpg.image_url}' alt='img' class='js-image image'/>`;
-      ;
-  } else { newFav ='';}
-  
-}; */
+//función para borrar los resultados
 function clearResults(){
     results = '';
 }
@@ -36,6 +27,8 @@ function handleReset(ev){
        
 }
 reset.addEventListener('click' , handleReset);
+
+//Función para borrar todos los favoritos
 
 function handleResetFav(event){
     event.preventDefault();
@@ -69,7 +62,8 @@ function renderFav(){
     let newHtml = [];
     const wrongImageFav = 'https://cdn.myanimelist.net/img/sp/icon/apple-touch-icon-256.png';
     for (const eachFav of favorites){
-        newHtml +=`<li class= 'favItem fav-colorList js-favList' id='${eachFav.mal_id}'>`;
+        
+        newHtml +=`<li class='favItem fav-colorList js-favList' id='${eachFav.mal_id}'>`;
         newHtml += `<h2 class= 'title-fav  js-favTitle'>${eachFav.title} </h2>`;
         if(eachFav.images.jpg.image_url === wrongImageFav){
             newHtml += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} alt="imagen"/>`;
@@ -77,12 +71,14 @@ function renderFav(){
             newHtml += `<img src='${eachFav.images.jpg.image_url}' alt='img' class='js-imageFav image'/>`;
 
         }
-       
+        newHtml+=`<button id='${eachFav.mal_id}' class='resetIconFav js-resetIconFav'><i class='fa-solid fa-circle-xmark'></i></button>`;
          } 
         
-        
-listenerAnime();
+
 listFav.innerHTML = newHtml; 
+listenerResetFav()    
+listenerAnime();
+
 }
 
 
@@ -150,5 +146,29 @@ function onLoad (){
     }
 }
 onLoad();
+//Función para resetear cada uno de los favoritos
+
+//let resetFav = [];
+function handleResetEachFav(event){
+    console.log('Holis');
+    event.preventDefault();
+    const idResetSelect = parseInt(event.currentTarget.id);
+    /*const resetFound = favorites.find((resetI) => resetI.mal_id === idResetSelect);*/
+    const resetFavFound = favorites.findIndex((fav) => fav.mal_id=== idResetSelect);
+    if(resetFavFound !== -1){
+        favorites.splice(resetFavFound, 1);
+        
+    }
+    renderFav();
+    listenerResetFav();
+};
+
+function listenerResetFav(){
+    const liFavIcon = document.querySelectorAll('.js-resetIconFav');
+    for (const eachIconFav of liFavIcon) {
+        eachIconFav.addEventListener('click' ,handleResetEachFav);
+    }
+   
+};
 
 //# sourceMappingURL=main.js.map
