@@ -21,6 +21,7 @@
   justify-content: space-between;
   align-items: flex-start;
   text-align: center;
+  border: solid black 2px;
   padding-right: 40px; }
 
 .titlePpal {
@@ -34,17 +35,34 @@
   padding: 10px; }
 
 .form {
-  margin-left: 20px;
+  margin-left: 50px;
   margin-bottom: 20px; }
 
 .titleResults {
   margin-left: 40px;
   font-family: Arial, Helvetica, sans-serif; }
 
+.titleResults1 {
+  background-color: white;
+  border: solid black 2px;
+  border-radius: 5px;
+  padding: 5px; }
+
 .title {
   color: #504949;
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif; }
+
+.title-fav {
+  padding-left: 15px; }
+
+.titleResultsFav {
+  color: white;
+  background-color: black;
+  padding: 5px 5px 5px 5px;
+  border: solid aqua 2px;
+  border-radius: 5px;
+  margin-right: 25px; }
 
 .list {
   border: solid black 10px;
@@ -57,14 +75,16 @@
 .fav-colorList {
   color: white;
   background-color: black;
-  border: solid aqua 5px; }
+  border: solid aqua 5px;
+  border-radius: 5px; }
 
 .containerFav {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: flex-start;
-  width: auto; }
+  justify-content: left;
+  align-items: center;
+  width: auto;
+  border: solid black 2px; }
 
 .title-fav {
   color: white;
@@ -89,5 +109,12 @@
 
 .hidden {
   display: none; }
+
+.imageFav {
+  width: 100px;
+  padding: 15px; }
+
+.listFav {
+  width: 200px; }
 
 /*# sourceMappingURL=main.css.map */

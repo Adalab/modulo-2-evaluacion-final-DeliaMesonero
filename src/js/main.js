@@ -32,29 +32,32 @@ reset.addEventListener('click' , handleReset);
 
 function handleResetFav(event){
     event.preventDefault();
-    if (listFav.innerHTML !== ''){
-        btnFav.classList.remove('hidden');
-    } else{
-        btnFav.classList.add('hidden');
-        favorites = [];
-        listFav.innerHTML = '';
+    favorites = [];
+    listFav.innerHTML = '';
         
-        localStorage.removeItem("data");
-    }
+    localStorage.removeItem("data");
     
-};
+    btnFav.classList.add('hidden');
+        
+    };
+    
+
 
 btnFav.addEventListener('click' , handleResetFav);
 
 
+//Función principal favoritos
 
 function handleFav(event){
-  console.log(event.currentTarget.id);  
 const idSelected = parseInt(event.currentTarget.id);
 const animeFound = results.data.find((result) => result.mal_id === idSelected);
 const favFound = favorites.findIndex ((fav) => fav.mal_id === idSelected);
 if(favFound === -1){
     favorites.push(animeFound);
+   if(btnFav.classList.contains('hidden')){
+       btnFav.classList.remove('hidden')
+   } 
+
 } else {
         favorites.splice(favFound, 1);
     }
@@ -64,6 +67,7 @@ listenerAnime();
 localStorage.setItem('data', JSON.stringify(favorites));
 };
 
+//Función parapintar los favoritos
 
 function renderFav(){
     let newHtml = [];
@@ -73,9 +77,9 @@ function renderFav(){
         newHtml +=`<li class='favItem fav-colorList js-favList' id='${eachFav.mal_id}'>`;
         newHtml += `<h2 class= 'title-fav  js-favTitle'>${eachFav.title} </h2>`;
         if(eachFav.images.jpg.image_url === wrongImageFav){
-            newHtml += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} class='image' alt="imagen"/>`;
+            newHtml += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} class='imageFav' alt="imagen"/>`;
         } else {
-            newHtml += `<img src='${eachFav.images.jpg.image_url}' alt='img' class='js-imageFav image'/>`;
+            newHtml += `<img src='${eachFav.images.jpg.image_url}' alt='img' class='js-imageFav imageFav'/>`;
 
         }
         newHtml+=`<button id='${eachFav.mal_id}' class='resetIconFav js-resetIconFav'><i class='fa-solid fa-circle-xmark'></i></button>`;
@@ -96,7 +100,9 @@ function listenerAnime(){
         
     }
 };
-    
+
+// Resultados API y pintarlos
+
 btn.addEventListener('click', (event)=> {
     event.preventDefault();
     let searchInputValue = searchInput.value;
@@ -106,8 +112,7 @@ fetch(`https://api.jikan.moe/v4/anime?q=${searchInputValue}`)
 .then ((data) => {
     results = data;
     renderList(results);
-    console.log(data);
-    
+   
         });
     });
 
@@ -127,7 +132,7 @@ const renderList = (arrayresults) =>{
         }
       
        
-        html +=`<li class= 'list js-eachList ${classFav}' id='${eachResult.mal_id}'>`;
+        html +=`<li class= 'list  js-eachList ${classFav}' id='${eachResult.mal_id}'>`;
         if(eachResult.images.jpg.image_url === wrongImage){
             html += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} class='image' alt="imagen"/>`;
         } else {
@@ -135,19 +140,19 @@ const renderList = (arrayresults) =>{
 
         }
         html += `<h2 class= 'title js-title ${classFav}'>${eachResult.title} </h2>`;
-       
         
     }
+    
 
 list.innerHTML = html;
 listenerAnime();
 };
 
+
 // función para almacenar en el Local Storage 
 
 function onLoad (){
     const dataLocalStorage = JSON.parse(localStorage.getItem('data'));
-    console.log(dataLocalStorage);
     if (dataLocalStorage)  {
         favorites = dataLocalStorage;
         renderFav();  
@@ -157,19 +162,24 @@ onLoad();
 
 //Función para resetear cada uno de los favoritos
 
-//let resetFav = [];
+
 function handleResetEachFav(event){
-    console.log('Holis');
+   
     event.preventDefault();
     const idResetSelect = parseInt(event.currentTarget.id);
-    /*const resetFound = favorites.find((resetI) => resetI.mal_id === idResetSelect);*/
+   
     const resetFavFound = favorites.findIndex((fav) => fav.mal_id=== idResetSelect);
+    btnFav.classList.add('hidden');
     if(resetFavFound !== -1){
         favorites.splice(resetFavFound, 1);
-        
+    if(btnFav.classList.contains('hidden')){
+            btnFav.classList.remove('hidden')
     }
+    }
+
     renderFav();
     listenerResetFav();
+    localStorage.setItem('data', JSON.stringify(favorites));
 };
 
 function listenerResetFav(){
@@ -179,3 +189,4 @@ function listenerResetFav(){
     }
    
 };
+
