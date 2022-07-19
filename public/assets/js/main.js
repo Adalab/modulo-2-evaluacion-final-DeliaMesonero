@@ -32,14 +32,21 @@ reset.addEventListener('click' , handleReset);
 
 function handleResetFav(event){
     event.preventDefault();
-    favorites = [];
-    listFav.innerHTML = '';
-    localStorage.removeItem("data");
-
-}
-
+    if (listFav.innerHTML !== ''){
+        btnFav.classList.remove('hidden');
+    } else{
+        btnFav.classList.add('hidden');
+        favorites = [];
+        listFav.innerHTML = '';
+        
+        localStorage.removeItem("data");
+    }
+    
+};
 
 btnFav.addEventListener('click' , handleResetFav);
+
+
 
 function handleFav(event){
   console.log(event.currentTarget.id);  
@@ -66,7 +73,7 @@ function renderFav(){
         newHtml +=`<li class='favItem fav-colorList js-favList' id='${eachFav.mal_id}'>`;
         newHtml += `<h2 class= 'title-fav  js-favTitle'>${eachFav.title} </h2>`;
         if(eachFav.images.jpg.image_url === wrongImageFav){
-            newHtml += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} alt="imagen"/>`;
+            newHtml += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} class='image' alt="imagen"/>`;
         } else {
             newHtml += `<img src='${eachFav.images.jpg.image_url}' alt='img' class='js-imageFav image'/>`;
 
@@ -122,7 +129,7 @@ const renderList = (arrayresults) =>{
        
         html +=`<li class= 'list js-eachList ${classFav}' id='${eachResult.mal_id}'>`;
         if(eachResult.images.jpg.image_url === wrongImage){
-            html += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} alt="imagen"/>`;
+            html += `<img src=${'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'} class='image' alt="imagen"/>`;
         } else {
             html += `<img src='${eachResult.images.jpg.image_url}' alt='img' class='js-image image'/>`;
 
@@ -136,6 +143,7 @@ list.innerHTML = html;
 listenerAnime();
 };
 
+// función para almacenar en el Local Storage 
 
 function onLoad (){
     const dataLocalStorage = JSON.parse(localStorage.getItem('data'));
@@ -146,6 +154,7 @@ function onLoad (){
     }
 }
 onLoad();
+
 //Función para resetear cada uno de los favoritos
 
 //let resetFav = [];

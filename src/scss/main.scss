@@ -26,8 +26,23 @@
     
     padding-right: 40px;
 }
+.titlePpal{
+  color: white;
+  background-color:black ;
+  text-align: center;
+  margin: 50px;
+  font-family: Arial, Helvetica, sans-serif; 
+  border: solid aqua 2px;
+  border-radius: 5px;
+  padding: 10px; 
+}
+.form{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
 .titleResults{
     margin-left: 40px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .title{
     color: rgb(80, 73, 73);
@@ -40,6 +55,7 @@
    list-style: none;
    
 }
+
 
 .fav-color{
    color: white;
@@ -71,9 +87,19 @@
     border: solid aqua 2px;
     
 }
+.btnSearch{
+    border: solid aqua 2px; 
+}
 .btnFav{
-    margin-left: 20px;
+    margin-left: 40px;
+    border: solid aqua 2px;
 }
 .resetIconFav {
 text-decoration: none;
+}
+.hidden{
+  display: none;  
+}
+.image{
+    
 }

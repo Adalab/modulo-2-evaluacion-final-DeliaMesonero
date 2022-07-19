@@ -23,8 +23,23 @@
   text-align: center;
   padding-right: 40px; }
 
+.titlePpal {
+  color: white;
+  background-color: black;
+  text-align: center;
+  margin: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: solid aqua 2px;
+  border-radius: 5px;
+  padding: 10px; }
+
+.form {
+  margin-left: 20px;
+  margin-bottom: 20px; }
+
 .titleResults {
-  margin-left: 40px; }
+  margin-left: 40px;
+  font-family: Arial, Helvetica, sans-serif; }
 
 .title {
   color: #504949;
@@ -62,10 +77,17 @@
 .js-search {
   border: solid aqua 2px; }
 
+.btnSearch {
+  border: solid aqua 2px; }
+
 .btnFav {
-  margin-left: 20px; }
+  margin-left: 40px;
+  border: solid aqua 2px; }
 
 .resetIconFav {
   text-decoration: none; }
+
+.hidden {
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */
