@@ -8,29 +8,49 @@
       href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+     crossorigin="anonymous"
+     referrerpolicy="no-referrer"/>
+    
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="icon" href="./assets/images/favicon.png" />
    
   </head>
 
-  <body>
-    <h1>Buscador series de Anime</h1>
-    <form>
+  <body class="body">
+    <h1 class="titlePpal">Buscador series de Anime</h1>
+    <form class="form">
       <label for="search"></label>
-      <input class="js-search" placeholder="Escribe aquí el nombre de la serie"
+      <input class="js-search" placeholder="Escribe aquí  la serie"
       id="serie"
       type="text"
       name="serie"
     />
-    <button class="js-button">Buscar</button>
-    <button class="js-btnReset">Reset</button>
+    <input type="button" value="Buscar" class=" btnSearch js-button"/>
+    <input type="button" value="Reset" class=" btnSearch js-btnReset"/>
     </form>
-    <div>
+    <div class="section">
+
+  
+    <div class="container js-container">
+      <h2 class="titleResults titleResults1"> Resultados: </h2>
       <ul class="js-list">
-        <li class="js-eachList list"> </li>
+       
       </ul>
     </div>
+    <div class="containerFav">
+      <h2 class="titleResults titleResultsFav">Series Favoritas:</h2>
+      <ul class="listFav js-listFav">
+       
 
+       
+      </ul>
+      <button class="btnFav  js-btnFav">Borrar Favoritos</button>
+
+    </div>
+  </div>
 
 
     <script src="./assets/js/main.js"></script>
