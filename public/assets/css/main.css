@@ -22,7 +22,8 @@
   align-items: flex-start;
   text-align: center;
   border: solid black 2px;
-  padding-right: 40px; }
+  padding-right: 40px;
+  background-color: white; }
 
 .titlePpal {
   color: white;
@@ -43,8 +44,9 @@
   font-family: Arial, Helvetica, sans-serif; }
 
 .titleResults1 {
-  background-color: white;
-  border: solid black 2px;
+  color: white;
+  background-color: black;
+  border: solid aqua 2px;
   border-radius: 5px;
   padding: 5px; }
 
@@ -79,6 +81,7 @@
   border-radius: 5px; }
 
 .containerFav {
+  background-color: #f8c7cf;
   display: flex;
   flex-direction: column;
   justify-content: left;
