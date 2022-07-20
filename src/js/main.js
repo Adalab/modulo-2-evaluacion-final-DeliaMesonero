@@ -8,6 +8,7 @@ const listFav = document.querySelector('.js-listFav');
 const btnFav = document.querySelector('.js-btnFav');
 const resetIconFav = document.querySelector('.js-resetIconFav');
 
+const btnLogInput = document.querySelector('.js-btnLog');
 
 let results = [];
 let favorites= [];
@@ -140,6 +141,7 @@ const renderList = (arrayresults) =>{
 
         }
         html += `<h2 class= 'title js-title ${classFav}'>${eachResult.title} </h2>`;
+        html += `<p class= 'paragResult ${classFav}'>${eachResult.type}</p>`;
         
     }
     
@@ -189,4 +191,12 @@ function listenerResetFav(){
     }
    
 };
+function handleLog (event){
+event.preventDefault();
+for (const log of favorites) {
+    console.log(log.title);
+    
+}
+}
 
+btnLogInput.addEventListener('click', handleLog);
